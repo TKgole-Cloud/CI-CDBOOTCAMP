@@ -10,8 +10,22 @@ jobs:
             - name: Check out my code
               uses: actions/checkout@v4
 
+            - name: Set up node
+              uses: actions/setup-node@v4
+              with:
+                 node-version: '20'
+
+            - name: npm ci
+              run: npm ci
+              working-directory: app
+              
+            - name: npm test
+              run: npm test
+              working-directory: app  
+
             - name: say hello
               run: echo "Hello from GitHub Actions"  
 
             - name: Show files on the machine
               run: ls -la      
+
