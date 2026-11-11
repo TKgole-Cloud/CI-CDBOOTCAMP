@@ -15,11 +15,11 @@ jobs:
               with:
                  node-version: '20'
 
-            - name: npm ci
+            - name: npm-ci
               run: npm ci
               working-directory: app
               
-            - name: npm test
+            - name: npm-test
               run: npm test
               working-directory: app  
 
