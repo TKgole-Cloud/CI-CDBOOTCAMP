@@ -4,7 +4,7 @@ on:
     push:
 
 jobs:
-    hello:
+    test:
         runs-on: ubuntu-latest
         steps:
             - name: Check out my code
@@ -27,5 +27,25 @@ jobs:
               run: echo "Hello from GitHub Actions"  
 
             - name: Show files on the machine
-              run: ls -la      
+              run: ls -la     
+
+    lint:      
+        runs-on: ubuntu-latest
+        needs: test
+        steps:
+          - name: Check out my code
+            uses: actions/checkout@v4
+
+          - name: Set up node
+            uses: actions/setup-node@v4
+            with:
+              node-version: '20'
+
+          - name: npm-install
+            run: npm install
+            working-directory: app
+            
+          - name: npm-lint
+            run: npm run lint
+            working-directory: app  
 
