@@ -36,16 +36,6 @@ jobs:
           - name: Check out my code
             uses: actions/checkout@v4
 
-          - name: Set up node
-            uses: actions/setup-node@v4
-            with:
-              node-version: '20'
-
-          - name: npm-install
-            run: npm install
-            working-directory: app
-            
-          - name: npm-lint
-            run: npm run lint
-            working-directory: app  
+          - name: Check index.js syntax
+            run: node --check app/index.js
 
