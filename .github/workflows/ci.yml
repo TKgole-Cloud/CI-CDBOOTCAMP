@@ -15,6 +15,12 @@ jobs:
               with:
                  node-version: '20'
 
+            - name: Cache npm packages
+              uses: actions/cache@v4
+              with:
+                path: ~/.npm
+                key: ${{ runner.os }}-npm-${{ hashFiles('app/package-lock.json') }}     
+
             - name: npm-install
               run: npm install
               working-directory: app
