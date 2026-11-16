@@ -10,7 +10,7 @@ jobs:
           matrix:
              node-version: [18, 20, 22]
         steps:
-            - name: Check out my code
+            - name: Check out my Code
               uses: actions/checkout@v4
 
             - name: Set up node
