@@ -36,7 +36,7 @@ jobs:
               run: echo "Hello from GitHub Actions"  
 
             - name: Show files on the machine
-              run: ls -la     
+              run: ls -la          
 
     lint:      
         runs-on: ubuntu-latest
@@ -48,3 +48,12 @@ jobs:
           - name: Check index.js syntax
             run: node --check app/index.js
 
+    build-image:
+      runs-on: ubuntu-latest
+      needs: test
+      steps:
+        - name: Check out my Code
+          uses: actions/checkout@v4
+
+        - name: Build Docker image
+          run: docker build -t myapp:${{ github.sha }} ./app             
